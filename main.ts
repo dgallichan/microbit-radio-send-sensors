@@ -37,8 +37,10 @@ trackMode = 0
 basic.forever(function () {
     if (trackMode == 0) {
         thisMessage = "#" + control.deviceName() + "," + convertToText(input.acceleration(Dimension.X)) + "," + convertToText(input.acceleration(Dimension.Y)) + "," + convertToText(input.acceleration(Dimension.Z)) + ";" + ""
-    } else {
+    } else if (trackMode == 1) {
         thisMessage = "#" + control.deviceName() + "," + convertToText(input.rotation(Rotation.Pitch)) + "," + convertToText(input.rotation(Rotation.Roll)) + "," + convertToText(50) + ";" + ""
+    } else {
+        thisMessage = "#" + control.deviceName() + "," + convertToText(input.rotation(Rotation.Pitch)) + "," + convertToText(input.rotation(Rotation.Roll)) + "," + convertToText(input.compassHeading()) + ";" + ""
     }
     radio.sendString(thisMessage)
     led.toggle(4, 0)
