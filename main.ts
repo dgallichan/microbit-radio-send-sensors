@@ -9,7 +9,7 @@ input.onButtonPressed(Button.A, function () {
 })
 input.onButtonPressed(Button.AB, function () {
     trackMode += 1
-    if (trackMode > 1) {
+    if (trackMode > 2) {
         trackMode = 0
     }
     for (let index = 0; index <= 4; index++) {
