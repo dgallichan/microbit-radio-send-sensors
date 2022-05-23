@@ -2,23 +2,18 @@ enum RadioMessage {
     message1 = 49434
 }
 input.onButtonPressed(Button.A, function () {
-    sendDelay += -10
+    sendDelay += -50
     if (sendDelay < 10) {
         sendDelay = 10
     }
-    basic.showNumber(sendDelay)
-    thisImage.showImage(0)
 })
 input.onButtonPressed(Button.B, function () {
-    sendDelay += 10
-    basic.showNumber(sendDelay)
-    thisImage.showImage(0)
+    sendDelay += 50
 })
 let thisMessage = ""
 let sendDelay = 0
-let thisImage: Image = null
 radio.setGroup(99)
-thisImage = images.createImage(`
+let thisImage = images.createImage(`
     # # # . .
     . # . . .
     . # . . #
