@@ -8,8 +8,6 @@ input.onButtonPressed(Button.A, function () {
     }
 })
 input.onButtonPressed(Button.AB, function () {
-    input.calibrateCompass()
-    thisImage.showImage(0)
     trackMode += 1
     if (trackMode > 1) {
         trackMode = 0
@@ -25,9 +23,8 @@ input.onButtonPressed(Button.B, function () {
 let thisMessage = ""
 let trackMode = 0
 let sendDelay = 0
-let thisImage: Image = null
 radio.setGroup(99)
-thisImage = images.createImage(`
+let thisImage = images.createImage(`
     # # # . .
     . # . . .
     . # . . #
@@ -41,7 +38,7 @@ basic.forever(function () {
     if (trackMode == 0) {
         thisMessage = "#" + control.deviceName() + "," + convertToText(input.acceleration(Dimension.X)) + "," + convertToText(input.acceleration(Dimension.Y)) + "," + convertToText(input.acceleration(Dimension.Z)) + ";" + ""
     } else {
-        thisMessage = "#" + control.deviceName() + "," + convertToText(input.rotation(Rotation.Pitch)) + "," + convertToText(input.rotation(Rotation.Roll)) + "," + convertToText(input.compassHeading()) + ";" + ""
+        thisMessage = "#" + control.deviceName() + "," + convertToText(input.rotation(Rotation.Pitch)) + "," + convertToText(input.rotation(Rotation.Roll)) + "," + convertToText(50) + ";" + ""
     }
     radio.sendString(thisMessage)
     led.toggle(4, 0)
