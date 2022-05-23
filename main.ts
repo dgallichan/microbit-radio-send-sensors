@@ -8,6 +8,8 @@ input.onButtonPressed(Button.A, function () {
     }
 })
 input.onButtonPressed(Button.AB, function () {
+    input.calibrateCompass()
+    thisImage.showImage(0)
     trackMode += 1
     if (trackMode > 1) {
         trackMode = 0
@@ -23,8 +25,9 @@ input.onButtonPressed(Button.B, function () {
 let thisMessage = ""
 let trackMode = 0
 let sendDelay = 0
+let thisImage: Image = null
 radio.setGroup(99)
-let thisImage = images.createImage(`
+thisImage = images.createImage(`
     # # # . .
     . # . . .
     . # . . #
